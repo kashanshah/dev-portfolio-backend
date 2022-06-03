@@ -5,5 +5,5 @@ node_modules
 yarn.lock
 nodemon.json
 .yarnrc
-public
+express/public
 

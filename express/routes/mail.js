@@ -4,7 +4,7 @@ const sendMail = require("../helpers/mailer");
 const router = express.Router();
 
 router.post('/v1/send',  (req, res) => {
-  const mailResponse =  sendMail(
+  const mailResponse = sendMail(
     'kashanshah@hotmail.com',
     'webmailer@kashanshah.com',
     'New Message Received on kashanshah.com',
@@ -15,10 +15,10 @@ router.post('/v1/send',  (req, res) => {
     '<p><strong>Email: </strong>' + req.body.contact + '</p>' +
     '<p><strong>Email: </strong>' + req.body.message + '</p>'
   ).then(response => {
-    res.json({status: 200, body: response});
+    res.send('sent!');
   }).catch(error=>{
     // console.log(error)
-    res.status(500).json({error: error});
+    res.status(500).send(error);
   });
 
 });
@@ -44,7 +44,5 @@ router.route('/user/:id')
     //delete
     res.json({_id: req.params.id})
   });
-
-router.param
 
 module.exports = router;
